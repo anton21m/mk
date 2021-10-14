@@ -2,8 +2,8 @@ console.log("success!!")
 
 //task #0
 const player1 = {
-    name: 'player1',
-    hp: 100,
+    name: 'SCORPION',
+    hp: 50,
     img: 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif',
     weapon: ['saw', 'toothpick'],
     attack: function() {
@@ -12,8 +12,8 @@ const player1 = {
 };
 
 const player2 = {
-    name: 'player2',
-    hp: 100,
+    name: 'SUB-ZERO',
+    hp: 80,
     img: 'http://reactmarathon-api.herokuapp.com/assets/kitana.gif',
     weapon: ['saw', 'toothpick'],
     attack: function() {
@@ -22,7 +22,7 @@ const player2 = {
 };
 
 //task #1
-function createPlayer(cls, name, life) {
+function createPlayer(cls, gamer) {
     const $player = document.createElement('div');
     $player.classList.add(cls);
 
@@ -32,11 +32,11 @@ function createPlayer(cls, name, life) {
 
     const $life = document.createElement('div');
     $life.classList.add('life');
-    $life.style.width = life;
+    $life.style.width = gamer.hp + "%";
 
     const $name = document.createElement('div');
     $name.classList.add('name');
-    $name.innerText = name;
+    $name.innerText = gamer.name;
 
     $progressBar.appendChild($life);
     $progressBar.appendChild($name);
@@ -45,7 +45,7 @@ function createPlayer(cls, name, life) {
     const $character = document.createElement('div');
     $character.classList.add('character');
     const $img = document.createElement('img');
-    $img.src = "http://reactmarathon-api.herokuapp.com/assets/kitana.gif";
+    $img.src = gamer.img;
 
     $character.appendChild($img);
 
@@ -58,5 +58,7 @@ function createPlayer(cls, name, life) {
 }
 
 // task #2
-createPlayer('player1', 'SCORPION', 50);
-createPlayer('player2', 'SUB-ZERO', 80);
+createPlayer('player1', player1);
+createPlayer('player2', player2);
+
+//task #3 finish
