@@ -22,9 +22,9 @@ const player2 = {
 };
 
 //task #1
-function createPlayer() {
-    const $player1 = document.createElement('div');
-    $player1.classList.add('player1');
+function createPlayer(cls, name, life) {
+    const $player = document.createElement('div');
+    $player.classList.add(cls);
 
     //progress-bar
     const $progressBar = document.createElement('div');
@@ -32,10 +32,11 @@ function createPlayer() {
 
     const $life = document.createElement('div');
     $life.classList.add('life');
+    $life.style.width = life;
 
     const $name = document.createElement('div');
     $name.classList.add('name');
-    $name.innerText = "Scorpion";
+    $name.innerText = name;
 
     $progressBar.appendChild($life);
     $progressBar.appendChild($name);
@@ -48,12 +49,14 @@ function createPlayer() {
 
     $character.appendChild($img);
 
-    $player1.appendChild($progressBar);
-    $player1.appendChild($character);
+    $player.appendChild($progressBar);
+    $player.appendChild($character);
 
-    const $root = document.querySelector('.root');
-    $root.appendChild($player1);
+    const $root = document.querySelector('div.arenas');
+    $root.appendChild($player);
 
 }
 
-createPlayer();
+// task #2
+createPlayer('player1', 'SCORPION', 50);
+createPlayer('player2', 'SUB-ZERO', 80);
