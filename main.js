@@ -63,7 +63,7 @@ function createPlayer(gamer) {
 
 function changeHP(player) {
     $playerLife = document.querySelector('.player' + player.player + ' .life');
-    player.hp -= 20;
+    player.hp -= Math.ceil(Math.random() * 20);
     player.hp = (player.hp > 0) ? player.hp : 0;
 
     $playerLife.style.width = player.hp + "%";
