@@ -1,4 +1,5 @@
-console.log("success!!")
+const $arenas = document.querySelector('div.arenas');
+const $randomButton = document.querySelector('.button');
 
 //task #0
 const player1 = {
@@ -60,7 +61,28 @@ function createPlayer(gamer) {
 
 }
 
-const $arenas = document.querySelector('div.arenas');
+function changeHP(player) {
+    $playerLife = document.querySelector('.player' + player.player + ' .life');
+    player.hp -= 20;
+    $playerLife.style.width = player.hp + "%";
+
+    if (player.hp < 0) {
+        $arenas.appendChild(playerLose(player.name));
+    }
+}
+
+function playerLose(name) {
+    const $loseTitle = createElement('div', 'loseTitle');
+    $loseTitle.innerText = name + " lose";
+    return $loseTitle;
+}
+
+$randomButton.addEventListener('click', function() {
+    console.log("Fight");
+    changeHP(player1);
+    changeHP(player2);
+});
+
 
 // task #2
 $arenas.appendChild(createPlayer(player1));
