@@ -2,6 +2,7 @@ console.log("success!!")
 
 //task #0
 const player1 = {
+    player: 1,
     name: 'SCORPION',
     hp: 50,
     img: 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif',
@@ -12,6 +13,7 @@ const player1 = {
 };
 
 const player2 = {
+    player: 2,
     name: 'SUB-ZERO',
     hp: 80,
     img: 'http://reactmarathon-api.herokuapp.com/assets/kitana.gif',
@@ -21,29 +23,31 @@ const player2 = {
     }
 };
 
+function createElement(tag, className) {
+    const $tag = document.createElement(tag);
+    if (className)
+        $tag.classList.add(className);
+    return $tag;
+}
+
 //task #1
-function createPlayer(cls, gamer) {
-    const $player = document.createElement('div');
-    $player.classList.add(cls);
+function createPlayer(gamer) {
+    const $player = createElement('div', "player" + gamer.player);
 
     //progress-bar
-    const $progressBar = document.createElement('div');
-    $progressBar.classList.add('progressbar');
+    const $progressBar = createElement('div', 'progressbar');
 
-    const $life = document.createElement('div');
-    $life.classList.add('life');
+    const $life = createElement('div', 'life');
     $life.style.width = gamer.hp + "%";
 
-    const $name = document.createElement('div');
-    $name.classList.add('name');
+    const $name = createElement('div', 'name');
     $name.innerText = gamer.name;
 
     $progressBar.appendChild($life);
     $progressBar.appendChild($name);
 
     //character
-    const $character = document.createElement('div');
-    $character.classList.add('character');
+    const $character = createElement('div', 'character');
     const $img = document.createElement('img');
     $img.src = gamer.img;
 
@@ -52,13 +56,14 @@ function createPlayer(cls, gamer) {
     $player.appendChild($progressBar);
     $player.appendChild($character);
 
-    const $root = document.querySelector('div.arenas');
-    $root.appendChild($player);
+    return $player;
 
 }
 
+const $arenas = document.querySelector('div.arenas');
+
 // task #2
-createPlayer('player1', player1);
-createPlayer('player2', player2);
+$arenas.appendChild(createPlayer(player1));
+$arenas.appendChild(createPlayer(player2));
 
 //task #3 finish
